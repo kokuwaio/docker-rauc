@@ -7,7 +7,7 @@ on:
     tags:
 
 env:
-  IMG: docker.pkg.github.com/kokuwaio/docker-rauc/rauc
+  IMG: ghcr.io/kokuwaio/rauc
 
 jobs:
   deploy:
@@ -19,18 +19,18 @@ jobs:
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: kokuwaio/docker-rauc/rauc
+          name: kokuwaio/rauc
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.GIT_ACTION_TOKEN }}
           dockerfile: Dockerfile
-          registry: docker.pkg.github.com
+          registry: ghcr.io
       - name: Publish Tag to Registry
         if: contains(github.ref, 'refs/tags/v')
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: kokuwaio/docker-rauc/rauc
+          name: kokuwaio/rauc
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.GIT_ACTION_TOKEN }}
           dockerfile: Dockerfile
           tagging: true
-          registry: docker.pkg.github.com
+          registry: ghcr.io
