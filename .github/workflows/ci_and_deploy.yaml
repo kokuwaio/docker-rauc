@@ -18,20 +18,9 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
       - name: Publish to Registry
-        uses: elgohr/Publish-Docker-Github-Action@master
+        uses: jerray/publish-docker-action@master
         with:
-          name: kokuwaio/rauc
           username: ${{ github.actor }}
           password: ${{ secrets.GIT_ACTION_TOKEN }}
-          dockerfile: Dockerfile
-          registry: ghcr.io
-      - name: Publish Tag to Registry
-        if: contains(github.ref, 'refs/tags/')
-        uses: elgohr/Publish-Docker-Github-Action@master
-        with:
-          name: kokuwaio/rauc
-          username: ${{ github.actor }}
-          password: ${{ secrets.GIT_ACTION_TOKEN }}
-          dockerfile: Dockerfile
-          tagging: true
-          registry: ghcr.io
+          repository: ghcr.io/kokuwaio/rauc
+          auto_tag: true
