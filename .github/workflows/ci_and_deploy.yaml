@@ -26,7 +26,7 @@ jobs:
           dockerfile: Dockerfile
           registry: ghcr.io
       - name: Publish Tag to Registry
-        if: contains(github.ref, 'refs/tags/v')
+        if: contains(github.ref, 'refs/tags/')
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
           name: kokuwaio/rauc
