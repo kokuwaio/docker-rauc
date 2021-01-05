@@ -22,5 +22,6 @@ jobs:
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GIT_ACTION_TOKEN }}
-          repository: ghcr.io/kokuwaio/rauc
+          registry: ghcr.io
+          repository: kokuwaio/rauc
           auto_tag: true
